@@ -1,9 +1,12 @@
 fn main() {
     {
+        // selfキーワードは「io」をstd::ioの別名として使う宣言
         use std::io::{self, Read, Write, ErrorKind};
 
         const DEFAULT_BUF_SIZE: usize = 8 * 1024;
 
+        // std::io::copy()の実装
+        // ジェネリックに実装されているためFileからTcpStreamへコピーするのも、Stdinからメモリ上のVec<u8>へコピーするのもできる
         pub fn copy<R: ?Sized, W: ?Sized>(reader: &mut R, writer: &mut W) -> io::Result<u64>
             where R: Read, W: Write
         {
