@@ -30,8 +30,9 @@ fn main() {
 
         fn grep(target: &str) -> io::Result<()> {
             let stdin = io::stdin();
+            // stdinは排他ロックでガードされているため.lock()でBufReadを実装したStdinLockを取得する
             for line_result in stdin.lock().lines() {
-                let line = line_result?;
+                let line = line_result?; // io::Result<String>のエラーチェックして取り出し
                 if line.contains(target) {
                     println!("{}", line);
                 }
