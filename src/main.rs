@@ -28,10 +28,12 @@ fn main() {
         use std::io;
         use std::io::prelude::*;
 
-        fn grep(target: &str) -> io::Result<()> {
+        fn grep<R>(target: &str, reader: R) -> io::Result<()>
+            where R: BufRead
+        {
             let stdin = io::stdin();
             // stdinは排他ロックでガードされているため.lock()でBufReadを実装したStdinLockを取得する
-            for line_result in stdin.lock().lines() {
+            for line_result in reader.lines() {
                 let line = line_result?; // io::Result<String>のエラーチェックして取り出し
                 if line.contains(target) {
                     println!("{}", line);
