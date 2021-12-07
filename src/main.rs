@@ -31,8 +31,6 @@ fn main() {
         fn grep<R>(target: &str, reader: R) -> io::Result<()>
             where R: BufRead
         {
-            let stdin = io::stdin();
-            // stdinは排他ロックでガードされているため.lock()でBufReadを実装したStdinLockを取得する
             for line_result in reader.lines() {
                 let line = line_result?; // io::Result<String>のエラーチェックして取り出し
                 if line.contains(target) {
@@ -42,4 +40,8 @@ fn main() {
             Ok(())
         }
     }
+
+    // stdinは排他ロックでガードされているため.lock()でBufReadを実装したStdinLockを取得する
+    // let stdin = io::stdin();
+    // grep(&target, stdin.lock())?;
 }
