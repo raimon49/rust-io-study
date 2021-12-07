@@ -44,4 +44,8 @@ fn main() {
     // stdinは排他ロックでガードされているため.lock()でBufReadを実装したStdinLockを取得する
     // let stdin = io::stdin();
     // grep(&target, stdin.lock())?;
+
+    // FileもBufReadを実装しているのでgrep()を呼ぶことができる
+    // let f = File::open(file)?;
+    // grep(&target, BufReader::new(f))?;
 }
