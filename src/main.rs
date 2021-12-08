@@ -39,7 +39,6 @@ fn main() {
             }
             Ok(())
         }
-    }
 
     // stdinは排他ロックでガードされているため.lock()でBufReadを実装したStdinLockを取得する
     // let stdin = io::stdin();
@@ -48,4 +47,27 @@ fn main() {
     // FileはBufReadを実装していないがBufReader::new()に渡せばバッファリングしながら読み出せる
     // let f = File::open(file)?;
     // grep(&target, BufReader::new(f))?;
+    }
+    {
+        use std::io;
+        use std::io::prelude::*;
+
+        fn line_to_vec_with_loop<R>(reader: R)
+            where R: BufRead
+        {
+            // 1行ずつベクタに格納する
+            let mut lines_with_loop = vec![];
+            for line_result in reader.lines() {
+                let line = line_result;
+                lines_with_loop.push(line);
+            }
+
+        }
+        fn line_to_vec_with_collect<R>(reader: R)
+            where R: BufRead
+        {
+            // collect()で格納する
+            let lines_with_collect = reader.lines().collect::<io::Result<Vec<String>>>();
+        }
+    }
 }
