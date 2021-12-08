@@ -45,7 +45,7 @@ fn main() {
     // let stdin = io::stdin();
     // grep(&target, stdin.lock())?;
 
-    // FileもBufReadを実装しているのでgrep()を呼ぶことができる
+    // FileはBufReadを実装していないがBufReader::new()に渡せばバッファリングしながら読み出せる
     // let f = File::open(file)?;
     // grep(&target, BufReader::new(f))?;
 }
