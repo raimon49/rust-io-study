@@ -70,4 +70,9 @@ fn main() {
             let lines_with_collect = reader.lines().collect::<io::Result<Vec<String>>>();
         }
     }
+    {
+        use std::io::Stderr;
+
+        eprintln!("error: world note helloable");
+    }
 }
