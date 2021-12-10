@@ -75,4 +75,22 @@ fn main() {
 
         eprintln!("error: world note helloable");
     }
+    {
+        use std::fs::OpenOptions;
+
+        fn _open() {
+            // ファイルが存在したら、後ろに追記する
+            let log = OpenOptions::new()
+                .append(true)
+                .open("/tmp/tmp.log");
+        }
+
+        fn _write() {
+            // ファイルが存在したら、失敗させる
+            let log = OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open("/tmp/tmp.file");
+        }
+    }
 }
