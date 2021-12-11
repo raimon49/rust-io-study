@@ -71,8 +71,6 @@ fn main() {
         }
     }
     {
-        use std::io::Stderr;
-
         eprintln!("error: world note helloable");
     }
     {
