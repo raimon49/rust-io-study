@@ -91,4 +91,13 @@ fn main() {
                 .open("/tmp/tmp.file");
         }
     }
+    {
+        use std::io::Read;
+        use std::io;
+
+        let mut buf = String::new();
+        let mut e = io::empty(); // 読み出しは常に成功するが何も返さないreader実装
+        e.read_to_string(&mut buf).unwrap();
+        assert!(buf.is_empty());
+    }
 }
