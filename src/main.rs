@@ -92,9 +92,7 @@ fn main() {
         }
     }
     {
-        use std::io::Read;
-        use std::io::Write;
-        use std::io;
+        use std::io::{self, Read, Write, ErrorKind};
 
         let mut buf = String::new();
         let mut e = io::empty(); // 読み出しは常に成功するが何も返さないreader実装
