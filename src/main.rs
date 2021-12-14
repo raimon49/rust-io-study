@@ -103,5 +103,9 @@ fn main() {
         let write_buf = vec![1, 2, 3, 5, 8];
         let bytes = i.write(&write_buf).unwrap();
         assert_eq!(bytes, 5);
+
+        let mut repeat_buf = [0; 3];
+        io::repeat(0b101).read_exact(&mut repeat_buf).unwrap();
+        assert_eq!(repeat_buf, [0b101, 0b101, 0b101]);
     }
 }
