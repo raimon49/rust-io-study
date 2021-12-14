@@ -104,7 +104,7 @@ fn main() {
         let bytes = i.write(&write_buf).unwrap();
         assert_eq!(bytes, 5);
 
-        let mut repeat_buf = [0; 3];
+        let mut repeat_buf = [0; 3]; // 指定したバイト値を繰り返すreader実装
         io::repeat(0b101).read_exact(&mut repeat_buf).unwrap();
         assert_eq!(repeat_buf, [0b101, 0b101, 0b101]);
     }
