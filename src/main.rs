@@ -95,13 +95,11 @@ fn main() {
         use std::io::{self, Read, Write, ErrorKind};
 
         let mut buf = String::new();
-        let mut e = io::empty(); // 読み出しは常に成功するが何も返さないreader実装
-        e.read_to_string(&mut buf).unwrap();
+        io::empty().read_to_string(&mut buf).unwrap(); // 読み出しは常に成功するが何も返さないreader実装
         assert!(buf.is_empty());
 
-        let mut i = io::sink(); // 書き出しは常に成功するが何もしないwriter実装
         let write_buf = vec![1, 2, 3, 5, 8];
-        let bytes = i.write(&write_buf).unwrap();
+        let bytes = io::sink().write(&write_buf).unwrap(); // 書き出しは常に成功するが何もしないwriter実装
         assert_eq!(bytes, 5);
 
         let mut repeat_buf = [0; 3]; // 指定したバイト値を繰り返すreader実装
