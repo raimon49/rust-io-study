@@ -106,4 +106,15 @@ fn main() {
         io::repeat(0b101).read_exact(&mut repeat_buf).unwrap();
         assert_eq!(repeat_buf, [0b101, 0b101, 0b101]);
     }
+    {
+        use std::collections::HashMap;
+
+        type RoomId = String;
+        type RoomExits = Vec<(char, RoomId)>;
+        type RoomMap = HashMap<RoomId, RoomExits>;
+
+        let mut map = RoomMap::new();
+        map.insert("Cobble Crawl".to_string(),
+                   vec![('W', "Debris Room".to_string())]);
+    }
 }
