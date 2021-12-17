@@ -116,5 +116,8 @@ fn main() {
         let mut map = RoomMap::new();
         map.insert("Cobble Crawl".to_string(),
                    vec![('W', "Debris Room".to_string())]);
+        map.insert("Debris Room".to_string(),
+                   vec![('E', "Cobble Crawl".to_string()),
+                        ('W', "Sloping Cayon".to_string())]);
     }
 }
