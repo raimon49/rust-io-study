@@ -108,6 +108,9 @@ fn main() {
     }
     {
         use std::collections::HashMap;
+        use std::io;
+        use serde::Serialize;
+        use serde_json::Serializer;
 
         type RoomId = String;
         type RoomExits = Vec<(char, RoomId)>;
@@ -119,5 +122,8 @@ fn main() {
         map.insert("Debris Room".to_string(),
                    vec![('E', "Cobble Crawl".to_string()),
                         ('W', "Sloping Cayon".to_string())]);
+
+        let mut serializer = Serializer::new(io::stdout());
+        map.serialize(&mut serializer);
     }
 }
