@@ -123,6 +123,8 @@ fn main() {
                    vec![('E', "Cobble Crawl".to_string()),
                         ('W', "Sloping Cayon".to_string())]);
 
+        // serde::Serializeトレイトのserializeメソッドはシリアライズ方法を知っているすべてのデータ型で使える
+        // （文字列、文字、タプル、ベクタ、HashMapなど）
         let mut serializer = Serializer::new(io::stdout());
         map.serialize(&mut serializer);
     }
