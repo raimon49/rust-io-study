@@ -110,6 +110,7 @@ fn main() {
         use std::collections::HashMap;
         use std::io;
         use serde::Serialize;
+        use serde::Deserialize;
         use serde_json::Serializer;
 
         type RoomId = String;
@@ -127,5 +128,12 @@ fn main() {
         // （文字列、文字、タプル、ベクタ、HashMapなど）
         let mut serializer = Serializer::new(io::stdout());
         map.serialize(&mut serializer);
+
+        #[derive(Serialize, Deserialize)]
+        struct Player {
+            location: String,
+            items: Vec<String>,
+            health: u32
+        }
     }
 }
