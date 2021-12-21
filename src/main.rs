@@ -128,6 +128,7 @@ fn main() {
         // （文字列、文字、タプル、ベクタ、HashMapなど）
         let mut serializer = Serializer::new(io::stdout());
         map.serialize(&mut serializer);
+        println!("");
 
         #[derive(Serialize, Deserialize)]
         struct Player {
@@ -135,5 +136,12 @@ fn main() {
             items: Vec<String>,
             health: u32
         }
+
+        let player = Player{
+            location: "Cobble Crawl".to_string(),
+            items: vec!["a wand".to_string()],
+            health: 3
+        };
+        player.serialize(&mut serializer);
     }
 }
