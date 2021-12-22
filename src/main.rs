@@ -127,6 +127,7 @@ fn main() {
         // serde::Serializeトレイトのserializeメソッドはシリアライズ方法を知っているすべてのデータ型で使える
         // （文字列、文字、タプル、ベクタ、HashMapなど）
         let mut serializer = Serializer::new(io::stdout());
+        // 標準出力：{"Cobble Crawl":[["W","Debris Room"]],"Debris Room":[["E","Cobble Crawl"],["W","Sloping Cayon"]]}
         map.serialize(&mut serializer);
         println!("");
 
@@ -142,6 +143,7 @@ fn main() {
             items: vec!["a wand".to_string()],
             health: 3
         };
+        // 標準出力：{"location":"Cobble Crawl","items":["a wand"],"health":3}
         player.serialize(&mut serializer);
     }
 }
