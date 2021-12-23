@@ -146,4 +146,10 @@ fn main() {
         // 標準出力：{"location":"Cobble Crawl","items":["a wand"],"health":3}
         player.serialize(&mut serializer);
     }
+    {
+        use std::path::Path;
+
+        assert_eq!(Path::new("/home/raimon49/.bashrc").parent(),
+                   Some(Path::new("/home/raimon49")));
+    }
 }
