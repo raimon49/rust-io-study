@@ -151,5 +151,7 @@ fn main() {
 
         assert_eq!(Path::new("/home/raimon49/.bashrc").parent(),
                    Some(Path::new("/home/raimon49")));
+
+        assert!(Path::new("/home/raimon49").is_absolute());
     }
 }
