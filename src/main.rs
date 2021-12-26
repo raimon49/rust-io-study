@@ -153,5 +153,8 @@ fn main() {
                    Some(Path::new("/home/raimon49")));
 
         assert!(Path::new("/home/raimon49").is_absolute());
+
+        assert_eq!(Path::new("/home/raimon49").join(".bash_profile"),
+                   Path::new("/home/raimon49/.bash_profile"));
     }
 }
