@@ -148,6 +148,7 @@ fn main() {
     }
     {
         use std::path::Path;
+        use std::env;
 
         assert_eq!(Path::new("/home/raimon49/.bashrc").parent(),
                    Some(Path::new("/home/raimon49")));
@@ -156,5 +157,9 @@ fn main() {
 
         assert_eq!(Path::new("/home/raimon49").join(".bash_profile"),
                    Path::new("/home/raimon49/.bash_profile"));
+
+        let current_path = std::env::current_dir();
+        println!("");
+        println!("{}", current_path.unwrap().as_path().display());
     }
 }
