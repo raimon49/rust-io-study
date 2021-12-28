@@ -162,5 +162,7 @@ fn main() {
         let current_path = current_dir.unwrap();
         println!("");
         println!("{}", current_path.as_path().display());
+        assert!(current_path.exists());
+        assert!(current_path.is_dir());
     }
 }
