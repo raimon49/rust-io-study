@@ -158,8 +158,9 @@ fn main() {
         assert_eq!(Path::new("/home/raimon49").join(".bash_profile"),
                    Path::new("/home/raimon49/.bash_profile"));
 
-        let current_path = std::env::current_dir();
+        let current_dir = std::env::current_dir();
+        let current_path = current_dir.unwrap();
         println!("");
-        println!("{}", current_path.unwrap().as_path().display());
+        println!("{}", current_path.as_path().display());
     }
 }
