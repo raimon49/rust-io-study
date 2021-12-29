@@ -148,7 +148,6 @@ fn main() {
     }
     {
         use std::path::Path;
-        use std::env;
 
         assert_eq!(Path::new("/home/raimon49/.bashrc").parent(),
                    Some(Path::new("/home/raimon49")));
