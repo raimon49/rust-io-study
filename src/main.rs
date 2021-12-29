@@ -163,5 +163,8 @@ fn main() {
         println!("{}", current_path.as_path().display());
         assert!(current_path.exists());
         assert!(current_path.is_dir());
+        if let Some(path_str) = current_path.to_str() {
+            println!("{}", path_str);
+        }
     }
 }
