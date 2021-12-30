@@ -166,5 +166,6 @@ fn main() {
         if let Some(path_str) = current_path.to_str() {
             println!("{}", path_str);
         }
+        println!("{}", current_path.to_string_lossy().to_owned());
     }
 }
