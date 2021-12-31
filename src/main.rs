@@ -183,4 +183,16 @@ fn main() {
             }
         }
     }
+    {
+        #[cfg(unix)]
+        use std::os::unix::fs::symlink;
+
+        // 非Unixプラットフォーム用にsymlink関数のStubを定義
+        #[cfg(not(unix))]
+        fn symlink<P: AsRef<Path>, Q: AsRef<Path>>(src: P, dst: Q) -> std::io::Result<()> {
+            Err(io::Error::new(io::ErrorKind::Other,
+                               format!("can't copy symbolic link: {}",
+                                       src.as_ref().display())))
+        }
+    }
 }
